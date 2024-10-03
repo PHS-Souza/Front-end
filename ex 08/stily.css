@@ -1,0 +1,32 @@
+input:focus, select:focus {
+    border: 2px solid purple;
+}
+
+@media (min-width: 800px) {
+    #storeForm {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (min-width: 400px) and (max-width: 799px) {
+    #storeForm {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: 399px) {
+    #storeForm {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+label, input, select {
+    width: 100%;
+}
+ 

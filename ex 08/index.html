@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="stily.css">
+    <style type="text/css">
+        body {
+  background-color: rgb(191, 197, 199);
+}
+h1 {
+  color: white;
+  text-align: center;
+}
+    </style>
+</head>
+<body>
+    <h1>Cadastro de Loja</h1>
+    <br>
+
+    <form id="storeForm">
+        <label for="name">Nome da Loja:</label>
+        <input type="text" id="name" name="name">
+        <br>
+
+        <label for="address">Endereço:</label>
+        <input type="text" id="address" name="address"><br>
+    
+        <label for="days">Dias de Funcionamento:</label>
+        <select id="days" name="days" multiple>
+            <option value="monday">Segunda-feira</option>
+            <option value="tuesday">Terça-feira</option>
+            <option value="wednesday">Quarta-feira</option>
+            <option value="thursday">Quinta-feira</option>
+            <option value="friday">Sexta-feira</option>
+            <option value="saturday">Sábado</option>
+            <option value="sunday">Domingo</option>
+        </select><br>
+    
+        <label for="opening">Horário de Abertura:</label>
+        <input type="time" id="opening" name="opening"><br>
+    
+        <label for="closing">Horário de Fechamento:</label>
+        <input type="time" id="closing" name="closing"><br>
+    
+        <input type="submit" value="Cadastrar">
+    </form>
+     
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    const formElements = document.querySelectorAll("#storeForm input, #storeForm select");
+
+    formElements.forEach(element => {
+        element.addEventListener("focus", function() {
+            this.style.border = "2px solid purple";
+        });
+
+        element.addEventListener("input", function() {
+            console.log(`Valor atualizado no campo ${this.name}: ${this.value}`);
+        });
+    });
+
+    const form = document.getElementById("storeForm");
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+        console.log("Preparando envio...");
+
+        const formData = new FormData(form);
+
+        fetch("https://api.flit.com.br/submeterDados", {
+            method: "POST",
+            body: formData
+        }).then(response => {
+            console.log("Dados enviados com sucesso!", response);
+        }).catch(error => {
+            console.error("Erro ao enviar dados:", error);
+        });
+    });
+})
+
+    </script>
+    <Script>
+        document.addEventListener("DOMContentLoaded", function() {
+    const formElements = document.querySelectorAll("#storeForm input, #storeForm select");
+
+    formElements.forEach(element => {
+        element.addEventListener("focus", function() {
+            this.style.border = "2px solid purple";
+        });
+
+        element.addEventListener("input", function() {
+            localStorage.setItem(this.name, this.value);
+        });
+    });
+
+    const form = document.getElementById("storeForm");
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+        console.log("Preparando envio...");
+
+        const formData = new FormData(form);
+
+        fetch("https://api.flit.com.br/submeterDados", {
+            method: "POST",
+            body: formData
+        }).then(response => {  
+            console.log("Dados enviados com sucesso!", response);
+        }).catch(error => {
+            console.error("Erro ao enviar dados:", error);
+        });
+    });
+
+    // Recupera valores do localStorage e preenche os campos
+    formElements.forEach(element => {
+        if (localStorage.getItem(element.name)) {
+            element.value = localStorage.getItem(element.name);
+        }
+    });
+});
+
+    </Script>
+</body>
+</html>

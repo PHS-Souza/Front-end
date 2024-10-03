@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Cadastro</title>
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html">Início</a>
+        <a href="about.html">Sobre</a>
+        <a href="services.html">Serviços</a>
+        <a href="contact.html">Contato</a>
+        <a href="signup.html">Cadastro</a>
+    </div>
+    <div class="container">
+        <h1>Cadastro</h1>
+        <form>
+            <label for="nome">Nome:</label><br>
+            <input type="text" id="nome" name="nome" placeholder="Ex: João Silva"><br><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" placeholder="Ex: exemplo@email.com"><br><br>
+            <label for="senha">Senha:</label><br>
+            <input type="password" id="senha" name="senha" placeholder="Ex: ********"><br><br>
+            <label for="repetir_senha">Repetir Senha:</label><br>
+            <input type="password" id="repetir_senha" name="repetir_senha" placeholder="Ex: ********"><br><br>
+            <label for="sexo">Sexo:</label><br>
+            <select id="sexo" name="sexo">
+                <option value="masculino">Masculino</option>
+                <option value="feminino">Feminino</option>
+                <option value="outro">Outro</option>
+            </select><br><br>
+            <input type="submit" value="Cadastrar">
+        </form>
+    </div>
+</body>
+</html>
